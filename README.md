@@ -18,8 +18,11 @@ PostgreSQL: https://www.postgresql.org/download/windows/
 ## Запуск
 
 ```
+python init_db.py
 python -m app.main
 ```
+
+При старте бот скачивает docs HH.ru, обновляет search index в Yandex Cloud и запускает polling MAX.
 
 ## .env
 
@@ -33,5 +36,7 @@ python -m app.main
 | HH_DOCS_BRANCH | master |
 | HH_DOCS_PATH | docs |
 | HH_DOCS_CACHE_DIR | data/knowledge |
+| INDEX_STATE_PATH | data/index_state.json |
+| YANDEX_INDEX_LABEL | hh-max-bot |
 
 Секреты загружаются через `load_dotenv()` в `app/config.py`.

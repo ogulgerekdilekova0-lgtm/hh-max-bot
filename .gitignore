@@ -12,7 +12,7 @@ venv/
 *.swp
 
 # Data / cache
-data/knowledge/
+data/
 *.log
 .DS_Store
 
