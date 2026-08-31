@@ -1,5 +1,3 @@
-"""Load HH.ru API markdown docs from GitHub for the knowledge base."""
-
 from pathlib import Path
 
 import httpx
@@ -13,7 +11,6 @@ def _github_api_docs_url() -> str:
 
 
 def list_doc_files() -> list[str]:
-    """Return markdown file names from the HH docs folder on GitHub."""
     response = httpx.get(_github_api_docs_url(), timeout=30.0)
     response.raise_for_status()
     items = response.json()
@@ -21,7 +18,6 @@ def list_doc_files() -> list[str]:
 
 
 def download_docs(cache_dir: str | None = None) -> Path:
-    """Download all markdown docs into a local cache directory."""
     target = Path(cache_dir or HH_DOCS_CACHE_DIR)
     target.mkdir(parents=True, exist_ok=True)
 

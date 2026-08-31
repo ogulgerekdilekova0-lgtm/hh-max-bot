@@ -41,5 +41,4 @@ SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 
 
 def init_db() -> None:
-    """Create database tables if they do not exist."""
     Base.metadata.create_all(bind=engine)
