@@ -7,7 +7,8 @@ from app.yandex_assistant.assistant import build_or_update_index
 def bootstrap() -> None:
     init_db()
     docs_path = download_docs()
-    build_or_update_index(str(docs_path))
+    status = build_or_update_index(str(docs_path))
+    print(f"index: {status}, docs: {docs_path}")
 
 
 def main() -> None:

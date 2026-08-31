@@ -1,3 +1,5 @@
+import asyncio
+
 from app.config import MAX_BOT_TOKEN
 from app.database import SessionLocal, init_db
 from app.database.crud import get_or_create_user, save_message
@@ -5,7 +7,7 @@ from app.yandex_assistant.assistant import ask_assistant
 
 
 async def handle_user_message(max_user_id: str, text: str, display_name: str | None = None) -> str:
-    answer = ask_assistant(text)
+    answer = await asyncio.to_thread(ask_assistant, text)
 
     db = SessionLocal()
     try:
